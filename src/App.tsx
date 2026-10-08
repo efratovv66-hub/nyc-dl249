@@ -9,7 +9,7 @@ const region=(id:number)=>[9,11,12,21,23,36,37,38,39,40].includes(id)?'New Jerse
 const shoppingIds=[9,10,23,30,31,32,33,34,35,36,37,38,39,40];
 for(const id of shoppingIds.filter(id=>id>=30))photos[id]={...photos[23]};
 const shoppingDestinations=places.filter(p=>shoppingIds.includes(p.id)).sort((a,b)=>(region(a.id)==='New Jersey'?1:0)-(region(b.id)==='New Jersey'?1:0));
-const destinations=places.filter(p=>!shoppingIds.includes(p.id)).sort((a,b)=>(region(a.id)==='New Jersey'?1:0)-(region(b.id)==='New Jersey'?1:0));
+const destinations=[...places].sort((a,b)=>(region(a.id)==='New Jersey'?1:0)-(region(b.id)==='New Jersey'?1:0));
 const number=(id:number)=>destinations.findIndex(p=>p.id===id)+1;
 function TripMap({selected,done,onSelect,items}:{items:typeof places,selected:number,done:number[],onSelect:(id:number)=>void}){
  const container=useRef<HTMLDivElement>(null),map=useRef<any>(null),markers=useRef<any[]>([]),[loaded,setLoaded]=useState(false),[failed,setFailed]=useState(false);
