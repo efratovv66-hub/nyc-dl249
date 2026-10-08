@@ -1,0 +1,56 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "node_modules": true
+    },
+    "search.exclude": {
+      "index.html": true,
+      "package-lock.json": true
+    }
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build website",
+        "type": "process",
+        "command": "node",
+        "args": [
+          "build.cjs"
+        ],
+        "options": {
+          "cwd": "${workspaceFolder}",
+          "env": {
+            "PATH": "/Users/myrdwd/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:${env:PATH}"
+          }
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Preview website",
+        "type": "process",
+        "command": "node",
+        "args": [
+          "build.cjs",
+          "--serve"
+        ],
+        "options": {
+          "cwd": "${workspaceFolder}",
+          "env": {
+            "PATH": "/Users/myrdwd/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:${env:PATH}"
+          }
+        },
+        "problemMatcher": []
+      }
+    ]
+  }
+}
